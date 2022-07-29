@@ -1,13 +1,11 @@
-import asyncio
 import os
-import random
 from pathlib import Path
 
-import discord
+from bot import utils
 from discord.ext import commands
 
 
-bot = commands.AutoShardedBot(command_prefix="!")
+bot = commands.AutoShardedBot(command_prefix=utils.config.prefix)
 
 
 @bot.event
@@ -31,4 +29,4 @@ def load_extensions(_bot):
 
 def run():
     load_extensions(bot)
-    bot.run(os.getenv("TOKEN"))
+    bot.run(utils.config.token)
