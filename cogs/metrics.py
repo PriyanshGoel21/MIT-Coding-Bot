@@ -26,8 +26,7 @@ class Metrics(commands.Cog, name="metrics"):
         #         )
         # except asyncpg.UniqueViolationError:
         #     ...
-        if message.author.id != 890650629201076224:
-            await message.delete()
+        ...
 
 
 async def setup(bot: DiscordBot):
