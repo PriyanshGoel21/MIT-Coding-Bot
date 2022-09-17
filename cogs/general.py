@@ -13,11 +13,7 @@ class General(commands.Cog, name="general"):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
-        if message.author == self.bot.user:
-            return
-        if message.channel.id == 1020124128486883398 and message.embeds:
-            await message.channel.send("<@&1020327962865844385>", embeds=message.embeds)
-            await message.delete()
+        ...
 
     @bot_has_permissions(send_messages=True)
     @commands.hybrid_command(name="ping", description="Ping the bot.")
