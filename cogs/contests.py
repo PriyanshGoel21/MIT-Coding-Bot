@@ -27,7 +27,9 @@ class Contests(commands.Cog, name="contests"):
         now = discord.utils.utcnow()
         for event in guild.scheduled_events:
             if (event.start_time - now).total_seconds() // 60 == 60:
-                await channel.send(f"EVENT STARTING IN 1 HOUR\n\n{event.url}")
+                await channel.send(
+                    f"<@&1020327962865844385> EVENT STARTING IN 1 HOUR\n\n{event.url}"
+                )
 
     @tasks.loop(hours=24)
     async def update_contests(self):
@@ -70,7 +72,7 @@ class Contests(commands.Cog, name="contests"):
                                         location=obj["href"],
                                     )
                                     await channel.send(
-                                        f"NEW EVENT ADDED\n\n{event.url}",
+                                        f"<@&1020327962865844385> NEW EVENT ADDED\n\n{event.url}",
                                     )
                                 except Exception as E:
                                     print(E)
