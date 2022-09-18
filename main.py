@@ -36,6 +36,7 @@ class Bot(DiscordBot):
     async def on_ready(self):
         print(f"{self.user} has started")
         await self.change_presence(activity=discord.Game("with ur mom"))
+        await self.get_channel(1001560443803926608).send("Bot Started")
 
     async def setup_hook(self):
         """Initialize the db, prefixes & cogs."""
