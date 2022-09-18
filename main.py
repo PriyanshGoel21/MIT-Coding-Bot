@@ -9,6 +9,7 @@ import discord
 from discord.ext import commands
 
 from utillities.discordbot import DiscordBot
+from views.reaction_roles import CompetitiveCoding, LanguageRoles
 
 
 class Bot(DiscordBot):
@@ -51,6 +52,9 @@ class Bot(DiscordBot):
             await self.tree.sync(guild=guild)
         else:
             await self.tree.sync()
+
+        self.add_view(CompetitiveCoding())
+        self.add_view(LanguageRoles())
 
 
 async def main():
