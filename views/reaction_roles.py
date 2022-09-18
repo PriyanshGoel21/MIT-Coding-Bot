@@ -19,7 +19,7 @@ class CompetitiveCoding(discord.ui.View):
                 f"{role.mention} role removed.", ephemeral=True
             )
         else:
-            await interaction.user.remove_roles(role)
+            await interaction.user.add_roles(role)
             await interaction.response.send_message(
                 f"{role.mention} role added.", ephemeral=True
             )
@@ -43,7 +43,7 @@ class LanguageRoles(discord.ui.View):
                 f"{role.mention} role removed.", ephemeral=True
             )
         else:
-            await interaction.user.remove_roles(role)
+            await interaction.user.add_roles(role)
             await interaction.response.send_message(
                 f"{role.mention} role added.", ephemeral=True
             )
@@ -62,7 +62,7 @@ class LanguageRoles(discord.ui.View):
                 f"{role.mention} role removed.", ephemeral=True
             )
         else:
-            await interaction.user.remove_roles(role)
+            await interaction.user.add_roles(role)
             await interaction.response.send_message(
                 f"{role.mention} role added.", ephemeral=True
             )
@@ -83,7 +83,7 @@ class LanguageRoles(discord.ui.View):
                 f"{role.mention} role removed.", ephemeral=True
             )
         else:
-            await interaction.user.remove_roles(role)
+            await interaction.user.add_roles(role)
             await interaction.response.send_message(
                 f"{role.mention} role added.", ephemeral=True
             )
@@ -102,7 +102,7 @@ class LanguageRoles(discord.ui.View):
         #         f"{role.mention} role removed.", ephemeral=True
         #     )
         # else:
-        #     await interaction.user.remove_roles(role)
+        #     await interaction.user.add_roles(role)
         #     await interaction.response.send_message(
         #         f"{role.mention} role added.", ephemeral=True
         #     )
@@ -125,7 +125,7 @@ class LanguageRoles(discord.ui.View):
         #         f"{role.mention} role removed.", ephemeral=True
         #     )
         # else:
-        #     await interaction.user.remove_roles(role)
+        #     await interaction.user.add_roles(role)
         #     await interaction.response.send_message(
         #         f"{role.mention} role added.", ephemeral=True
         #     )

@@ -22,7 +22,7 @@ class General(commands.Cog, name="general"):
         channel = ctx.guild.get_channel(1019262719662247967)
         await channel.purge()
         try:
-            await ctx.send(
+            await channel.send(
                 embed=discord.Embed(
                     title="Competitive Coding",
                     description=f"Click the button below to get <@&1020327962865844385> role\n\nNote: Check for ongoing competitions in <#1020948698492043314> or events regularly.",
@@ -30,7 +30,7 @@ class General(commands.Cog, name="general"):
                 ),
                 view=CompetitiveCoding(),
             )
-            await ctx.send(
+            await channel.send(
                 embed=discord.Embed(
                     title="Language Roles",
                     description=f"Click the button(s) below to get language roles",
