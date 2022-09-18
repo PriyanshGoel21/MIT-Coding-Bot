@@ -18,6 +18,16 @@ class Contests(commands.Cog, name="contests"):
     @commands.Cog.listener()
     async def on_ready(self):
         self.update_contests.start()
+        self.reminder.start()
+
+    @tasks.loop(minutes=1)
+    async def reminder(self):
+        guild: discord.Guild = self.bot.get_guild(1001523934979690566)
+        channel: discord.TextChannel = guild.get_channel(1020948698492043314)
+        now = discord.utils.utcnow()
+        for event in guild.scheduled_events:
+            if (event.start_time - now).total_seconds() // 60 == 60:
+                await channel.send(f"EVENT STARTING IN 1 HOUR\n\n{event.url}")
 
     @tasks.loop(hours=24)
     async def update_contests(self):
