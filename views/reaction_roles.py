@@ -95,21 +95,17 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:c_:1019264465767760023>"),
     )
     async def clang(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020327962865844385)
-        # if role in interaction.user.roles:
-        #     await interaction.user.remove_roles(role)
-        #     await interaction.response.send_message(
-        #         f"{role.mention} role removed.", ephemeral=True
-        #     )
-        # else:
-        #     await interaction.user.add_roles(role)
-        #     await interaction.response.send_message(
-        #         f"{role.mention} role added.", ephemeral=True
-        #     )
-        await interaction.response.send_message(
-            f"Can't give role our noob admin hasn't made it and doesn't give epsi king admin",
-            ephemeral=True,
-        )
+        role: discord.Role = interaction.guild.get_role(1020330285096767578)
+        if role in interaction.user.roles:
+            await interaction.user.remove_roles(role)
+            await interaction.response.send_message(
+                f"{role.mention} role removed.", ephemeral=True
+            )
+        else:
+            await interaction.user.add_roles(role)
+            await interaction.response.send_message(
+                f"{role.mention} role added.", ephemeral=True
+            )
 
     @discord.ui.button(
         label="C++",
@@ -118,18 +114,14 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:cpp:1019264346406264952>"),
     )
     async def cpp(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # role: discord.Role = interaction.guild.get_role(1020327962865844385)
-        # if role in interaction.user.roles:
-        #     await interaction.user.remove_roles(role)
-        #     await interaction.response.send_message(
-        #         f"{role.mention} role removed.", ephemeral=True
-        #     )
-        # else:
-        #     await interaction.user.add_roles(role)
-        #     await interaction.response.send_message(
-        #         f"{role.mention} role added.", ephemeral=True
-        #     )
-        await interaction.response.send_message(
-            f"Can't give role our noob admin hasn't made it and doesn't give epsi king admin",
-            ephemeral=True,
-        )
+        role: discord.Role = interaction.guild.get_role(1020330226632376360)
+        if role in interaction.user.roles:
+            await interaction.user.remove_roles(role)
+            await interaction.response.send_message(
+                f"{role.mention} role removed.", ephemeral=True
+            )
+        else:
+            await interaction.user.add_roles(role)
+            await interaction.response.send_message(
+                f"{role.mention} role added.", ephemeral=True
+            )
