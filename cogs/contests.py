@@ -1,6 +1,7 @@
 import datetime
 import os
 import time
+from zoneinfo import ZoneInfo
 
 import aiohttp
 import discord
@@ -22,7 +23,7 @@ class Contests(commands.Cog, name="contests"):
     async def update_contests(self):
         headers = {"Authorization": os.getenv("CLIST_API_KEY")}
         guild: discord.Guild = self.bot.get_guild(1001523934979690566)
-        channel: discord.TextChannel = guild.get_channel(1020124128486883398)
+        channel: discord.TextChannel = guild.get_channel(1020948698492043314)
         async with aiohttp.ClientSession() as session:
             resource_ids = [
                 1,  # codeforces
@@ -52,14 +53,14 @@ class Contests(commands.Cog, name="contests"):
                                         start_time=datetime.datetime.strptime(
                                             obj["start"],
                                             "%Y-%m-%dT%H:%M:%S",
-                                        ).astimezone(tz=datetime.timezone.utc),
+                                        ).replace(tzinfo=datetime.timezone.utc),
                                         end_time=datetime.datetime.strptime(
                                             obj["end"], "%Y-%m-%dT%H:%M:%S"
-                                        ).astimezone(tz=datetime.timezone.utc),
+                                        ).replace(tzinfo=datetime.timezone.utc),
                                         location=obj["href"],
                                     )
                                     await channel.send(
-                                        f"<@&1020327962865844385>\n{event.url}"
+                                        f"NEW EVENT ADDED\n\n{event.url}",
                                     )
                                 except Exception as E:
                                     print(E)
