@@ -1,6 +1,20 @@
 import discord
 
 
+async def handle_role(interaction: discord.Interaction, role_id: int):
+    role: discord.Role = interaction.guild.get_role(role_id)
+    if role in interaction.user.roles:
+        await interaction.user.remove_roles(role)
+        await interaction.response.send_message(
+            f"{role.mention} role removed.", ephemeral=True
+        )
+    else:
+        await interaction.user.add_roles(role)
+        await interaction.response.send_message(
+            f"{role.mention} role added.", ephemeral=True
+        )
+
+
 class CompetitiveCoding(discord.ui.View):
     def __init__(self):
         super().__init__(timeout=None)
@@ -12,17 +26,7 @@ class CompetitiveCoding(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:thinkcpp:1009845268168052869>"),
     )
     async def cp(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020327962865844385)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020327962865844385)
 
 
 class LanguageRoles(discord.ui.View):
@@ -36,17 +40,7 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:py:1009845257162203146>"),
     )
     async def python(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020330177965862932)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020330177965862932)
 
     @discord.ui.button(
         label="Java",
@@ -55,17 +49,7 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:java:1009845262350565426>"),
     )
     async def java(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020330526311202926)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020330526311202926)
 
     @discord.ui.button(
         label="JavaScript",
@@ -76,17 +60,7 @@ class LanguageRoles(discord.ui.View):
     async def javascript(
         self, interaction: discord.Interaction, button: discord.ui.Button
     ):
-        role: discord.Role = interaction.guild.get_role(1020330326976888942)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020330326976888942)
 
     @discord.ui.button(
         label="C",
@@ -95,17 +69,7 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:c_:1019264465767760023>"),
     )
     async def clang(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020330285096767578)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020330285096767578)
 
     @discord.ui.button(
         label="C++",
@@ -114,14 +78,4 @@ class LanguageRoles(discord.ui.View):
         emoji=discord.PartialEmoji.from_str("<:cpp:1019264346406264952>"),
     )
     async def cpp(self, interaction: discord.Interaction, button: discord.ui.Button):
-        role: discord.Role = interaction.guild.get_role(1020330226632376360)
-        if role in interaction.user.roles:
-            await interaction.user.remove_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role removed.", ephemeral=True
-            )
-        else:
-            await interaction.user.add_roles(role)
-            await interaction.response.send_message(
-                f"{role.mention} role added.", ephemeral=True
-            )
+        await handle_role(interaction, 1020330226632376360)
