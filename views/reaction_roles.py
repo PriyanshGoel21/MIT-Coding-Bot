@@ -79,3 +79,19 @@ class LanguageRoles(discord.ui.View):
     )
     async def cpp(self, interaction: discord.Interaction, button: discord.ui.Button):
         await handle_role(interaction, 1020330226632376360)
+
+    @discord.ui.button(
+        label="Functional Languages",
+        style=discord.ButtonStyle.grey,
+        custom_id="fp_langs",
+    )
+    async def cpp(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_role(interaction, 1020330397395066931)
+
+    @discord.ui.button(
+        label="Other Languages",
+        style=discord.ButtonStyle.grey,
+        custom_id="other",
+    )
+    async def cpp(self, interaction: discord.Interaction, button: discord.ui.Button):
+        await handle_role(interaction, 1020330440386674699)
