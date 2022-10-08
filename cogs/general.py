@@ -25,7 +25,8 @@ class General(commands.Cog, name="general"):
             await channel.send(
                 embed=discord.Embed(
                     title="Competitive Coding",
-                    description=f"Click the button below to get <@&1020327962865844385> role\n\nNote: Check for ongoing competitions in <#1020948698492043314> or events regularly.",
+                    description=f"Click the button below to get <@&1020327962865844385> role\n\nNote: Check for "
+                                f"ongoing competitions in <#1020948698492043314> or events regularly.",
                     colour=discord.Colour.random(),
                 ),
                 view=CompetitiveCoding(),

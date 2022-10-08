@@ -54,7 +54,9 @@ class Contests(commands.Cog, name="contests"):
                         for obj in data["objects"]:
                             if (
                                 discord.utils.get(
-                                    guild.scheduled_events, name=obj["event"]
+                                    guild.scheduled_events, start_time=datetime.datetime.strptime(
+                                            obj["end"], "%Y-%m-%dT%H:%M:%S"
+                                        ).replace(tzinfo=datetime.timezone.utc)
                                 )
                                 is None
                             ):
@@ -72,7 +74,7 @@ class Contests(commands.Cog, name="contests"):
                                         location=obj["href"],
                                     )
                                     await channel.send(
-                                        f"<@&1020327962865844385> NEW EVENT ADDED\n\n{event.url}",
+                                        f"NEW EVENT ADDED\n\n{event.url}",
                                     )
                                 except Exception as E:
                                     print(E)
