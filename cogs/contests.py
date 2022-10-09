@@ -54,9 +54,10 @@ class Contests(commands.Cog, name="contests"):
                         for obj in data["objects"]:
                             if (
                                 discord.utils.get(
-                                    guild.scheduled_events, start_time=datetime.datetime.strptime(
-                                            obj["end"], "%Y-%m-%dT%H:%M:%S"
-                                        ).replace(tzinfo=datetime.timezone.utc)
+                                    guild.scheduled_events,
+                                    start_time=datetime.datetime.strptime(
+                                        obj["end"], "%Y-%m-%dT%H:%M:%S"
+                                    ).replace(tzinfo=datetime.timezone.utc),
                                 )
                                 is None
                             ):
@@ -80,6 +81,13 @@ class Contests(commands.Cog, name="contests"):
                                     print(E)
                 except Exception as E:
                     print(E)
+
+    @commands.is_owner()
+    @commands.command()
+    async def clear_events(self, ctx: commands.Context):
+        await ctx.message.delete()
+        for event in ctx.guild.scheduled_events:
+            await event.delete()
 
 
 async def setup(bot: DiscordBot):
