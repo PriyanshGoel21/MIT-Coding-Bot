@@ -55,9 +55,7 @@ class Contests(commands.Cog, name="contests"):
                             if (
                                 discord.utils.get(
                                     guild.scheduled_events,
-                                    start_time=datetime.datetime.strptime(
-                                        obj["end"], "%Y-%m-%dT%H:%M:%S"
-                                    ).replace(tzinfo=datetime.timezone.utc),
+                                    location=obj["href"],
                                 )
                                 is None
                             ):
