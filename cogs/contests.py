@@ -23,7 +23,7 @@ class Contests(commands.Cog, name="contests"):
     @tasks.loop(minutes=1)
     async def reminder(self):
         guild: discord.Guild = self.bot.get_guild(1001523934979690566)
-        channel: discord.TextChannel = guild.get_channel(1020948698492043314)
+        channel: discord.TextChannel = guild.get_channel(1028373519286943796)
         now = discord.utils.utcnow()
         for event in guild.scheduled_events:
             if (event.start_time - now).total_seconds() // 60 == 60:
@@ -35,7 +35,7 @@ class Contests(commands.Cog, name="contests"):
     async def update_contests(self):
         headers = {"Authorization": os.getenv("CLIST_API_KEY")}
         guild: discord.Guild = self.bot.get_guild(1001523934979690566)
-        channel: discord.TextChannel = guild.get_channel(1020948698492043314)
+        channel: discord.TextChannel = guild.get_channel(1028373519286943796)
         async with aiohttp.ClientSession() as session:
             resource_ids = [
                 1,  # codeforces
@@ -82,10 +82,11 @@ class Contests(commands.Cog, name="contests"):
 
     @commands.is_owner()
     @commands.command()
-    async def clear_events(self, ctx: commands.Context):
+    async def update_events(self, ctx: commands.Context):
         await ctx.message.delete()
         for event in ctx.guild.scheduled_events:
             await event.delete()
+        await self.update_contests()
 
 
 async def setup(bot: DiscordBot):
