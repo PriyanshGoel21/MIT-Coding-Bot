@@ -82,10 +82,11 @@ class Contests(commands.Cog, name="contests"):
 
     @commands.is_owner()
     @commands.command()
-    async def clear_events(self, ctx: commands.Context):
+    async def update_events(self, ctx: commands.Context):
         await ctx.message.delete()
         for event in ctx.guild.scheduled_events:
             await event.delete()
+        await self.update_contests()
 
 
 async def setup(bot: DiscordBot):
