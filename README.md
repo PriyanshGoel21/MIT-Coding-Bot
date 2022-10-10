@@ -7,6 +7,7 @@
 ![Lines](https://img.shields.io/tokei/lines/github/PriyanshGoel21/MIT-Coding-Bot?style=for-the-badge)
 
 </div>
+
 # MIT Coding Bot
 
 A discord bot made to manage Manipal Institute of Technology’s coding server (https://discord.gg/JF32HmCnz8).
