@@ -1,14 +1,12 @@
 import datetime
 import os
-import time
-from zoneinfo import ZoneInfo
 
 import aiohttp
 import discord
 from discord.ext import commands, tasks
 
-from utillities import bot_has_permissions
 from utillities.discordbot import DiscordBot
+import re
 
 
 class Contests(commands.Cog, name="contests"):
@@ -59,18 +57,21 @@ class Contests(commands.Cog, name="contests"):
                                 )
                                 is None
                             ):
+                                name = re.sub(r"\([^()]*\)", "", obj["event"]).strip()
                                 try:
-                                    event: discord.ScheduledEvent = await guild.create_scheduled_event(
-                                        name=obj["event"],
-                                        description=f"{obj['event']}\n\n{obj['href']}",
-                                        start_time=datetime.datetime.strptime(
-                                            obj["start"],
-                                            "%Y-%m-%dT%H:%M:%S",
-                                        ).replace(tzinfo=datetime.timezone.utc),
-                                        end_time=datetime.datetime.strptime(
-                                            obj["end"], "%Y-%m-%dT%H:%M:%S"
-                                        ).replace(tzinfo=datetime.timezone.utc),
-                                        location=obj["href"],
+                                    event: discord.ScheduledEvent = (
+                                        await guild.create_scheduled_event(
+                                            name=name,
+                                            description=f"{name}\n\n{obj['href']}",
+                                            start_time=datetime.datetime.strptime(
+                                                obj["start"],
+                                                "%Y-%m-%dT%H:%M:%S",
+                                            ).replace(tzinfo=datetime.timezone.utc),
+                                            end_time=datetime.datetime.strptime(
+                                                obj["end"], "%Y-%m-%dT%H:%M:%S"
+                                            ).replace(tzinfo=datetime.timezone.utc),
+                                            location=obj["href"],
+                                        )
                                     )
                                     await channel.send(
                                         f"NEW EVENT ADDED\n\n{event.url}",
