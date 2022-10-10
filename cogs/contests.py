@@ -73,9 +73,9 @@ class Contests(commands.Cog, name="contests"):
                                             location=obj["href"],
                                         )
                                     )
-                                    await channel.send(
-                                        f"NEW EVENT ADDED\n\n{event.url}",
-                                    )
+                                    # await channel.send(
+                                    #     f"NEW EVENT ADDED\n\n{event.url}",
+                                    # )
                                 except Exception as E:
                                     print(E)
                 except Exception as E:
