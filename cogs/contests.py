@@ -89,6 +89,21 @@ class Contests(commands.Cog, name="contests"):
             await event.delete()
         await self.update_contests()
 
+    @commands.is_owner()
+    @commands.command()
+    async def tesst(self, ctx: commands.Context):
+        guild: discord.Guild = self.bot.get_guild(1001523934979690566)
+        if (
+            discord.utils.get(
+                guild.scheduled_events,
+                location="https://codingcompetitions.withgoogle.com/kickstart/round/00000000008cb1b6",
+            )
+            is None
+        ):
+            await ctx.send("Ok")
+        else:
+            await ctx.send("not ok")
+
 
 async def setup(bot: DiscordBot):
     await bot.add_cog(Contests(bot))
