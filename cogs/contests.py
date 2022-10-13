@@ -16,7 +16,8 @@ class Contests(commands.Cog, name="contests"):
     @commands.Cog.listener()
     async def on_ready(self):
         # self.update_contests.start()
-        self.reminder.start()
+        # self.reminder.start()
+        ...
 
     @tasks.loop(minutes=1)
     async def reminder(self):
